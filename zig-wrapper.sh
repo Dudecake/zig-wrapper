@@ -14,7 +14,7 @@ fi
 
 [[ -d .zig/wrapper ]] || mkdir -p .zig/wrapper
 cat << EOF > .zig/wrapper/zig-wrapper.properties
-zig_version=0.12.0
+zig_version=0.13.0
 EOF
 
 cat << EOF > zigw
