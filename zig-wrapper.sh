@@ -4,7 +4,11 @@ set -e
 
 if [[ ! -f build.zig ]]; then
   echo "No 'build.zig' file present" >&2
-  exit 1
+  if [[ "${1}" = "-f" || "${1}" = "--force" ]]; then
+    echo "'force' given, setting up wrapper anyway." >&1
+  else
+    exit 1
+  fi
 fi
 
 if [[ -f zigw ]]; then
