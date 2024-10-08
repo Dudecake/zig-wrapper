@@ -26,7 +26,9 @@ cat << EOF > zigw
 
 set -e
 
-. .zig/wrapper/zig-wrapper.properties
+script_dir=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+. ${script_dir}/.zig/wrapper/zig-wrapper.properties
 wrapper_directory="\${HOME}/.cache/zig/wrapper/\${zig_version}"
 if [[ "\${1}" = "wrapper" ]]; then
   case "\${2}" in
@@ -34,7 +36,7 @@ if [[ "\${1}" = "wrapper" ]]; then
       cat << EOV >&2
 Zig version:      \${zig_version}
 Zig home:         \${wrapper_directory}
-Wrapper version:  0.0.3
+Wrapper version:  0.0.4
 EOV
       ;;
     *)
